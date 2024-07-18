@@ -35,10 +35,15 @@ function mostrarDatosClima(data) {
     const cityTemp = data.main.temp;
     const description = data.weather[0].description;
     const cityHumidity = data.main.humidity;
+    const weatherIcon = data.weather[0].icon;
 
     const cityTitleElement = document.createElement('h2');
     cityTitleElement.classList.add('city-title', 'appear');
     cityTitleElement.textContent = `${cityName}, ${cityCountry} `;
+
+    const iconElement = document.createElement('img');
+    iconElement.classList.add('city-icon', 'appear');
+    iconElement.src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
 
     const cityTempElement = document.createElement('p');
     cityTempElement.classList.add('city-temp', 'appear');
@@ -53,6 +58,7 @@ function mostrarDatosClima(data) {
     cityDescriptionElement.textContent = `The weather is: ${description}`;
 
     divdatosTiempo.appendChild(cityTitleElement);
+    divdatosTiempo.appendChild(iconElement);
     divdatosTiempo.appendChild(cityTempElement);
     divdatosTiempo.appendChild(cityDescriptionElement);
     divdatosTiempo.appendChild(cityHumidityElement);
